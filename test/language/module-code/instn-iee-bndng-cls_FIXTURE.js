@@ -5,14 +5,21 @@ export { A as B } from './instn-iee-bndng-cls.js';
 
 // Taken together, the following two assertions demonstrate that there is no
 // entry in the environment record for ImportName:
-assert.throws(ReferenceError, function() {
-  A;
-});
-assert.sameValue(typeof A, 'undefined');
+export const results = [];
+
+try {
+  A
+} catch (error) {
+  results.push(error.name, typeof A);
+}
 
 // Taken together, the following two assertions demonstrate that there is no
 // entry in the environment record for ExportName:
-assert.throws(ReferenceError, function() {
-  B;
-});
-assert.sameValue(typeof B, 'undefined');
+try {
+  B
+} catch (error) {
+  results.push(error.name, typeof B);
+}
+
+
+
